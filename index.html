@@ -17,6 +17,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            cursor: none;
         }
         :root {
             --primary: #00d4ff;
@@ -36,6 +37,113 @@
             color: var(--light);
             overflow-x: hidden;
         }
+        
+        /* Advanced Custom Cursor Styles */
+        .cursor {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.8),
+                        0 0 40px rgba(0, 212, 255, 0.6),
+                        0 0 60px rgba(0, 212, 255, 0.4);
+        }
+        
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(0, 212, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: all 0.15s ease-out;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1), transparent);
+        }
+        
+        .cursor.hover {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            box-shadow: 0 0 30px rgba(255, 107, 157, 0.9),
+                        0 0 60px rgba(255, 107, 157, 0.6),
+                        0 0 90px rgba(255, 107, 157, 0.4);
+        }
+        
+        .cursor-follower.hover {
+            width: 80px;
+            height: 80px;
+            border-color: rgba(255, 107, 157, 0.7);
+            background: radial-gradient(circle, rgba(255, 107, 157, 0.2), transparent);
+        }
+        
+        /* Cursor Trail Particles */
+        .cursor-trail {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0.8;
+            animation: fadeOutTrail 0.8s ease-out forwards;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.8);
+        }
+        
+        @keyframes fadeOutTrail {
+            0% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+        }
+        
+        /* Cursor Click Effect */
+        .cursor-click-effect {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9997;
+            animation: clickRipple 0.6s ease-out forwards;
+        }
+        
+        @keyframes clickRipple {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(3);
+            }
+        }
+        
+        /* Hide cursor on mobile */
+        @media (max-width: 768px) {
+            .cursor,
+            .cursor-follower,
+            .cursor-trail,
+            .cursor-click-effect {
+                display: none;
+            }
+            * {
+                cursor: auto !important;
+            }
+        }
+        
         /* Animated Background */
         .bg-animation {
             position: fixed;
@@ -200,7 +308,6 @@
             border-radius: 50px;
             font-size: 1.05rem;
             font-weight: 600;
-            cursor: pointer;
             transition: all 0.4s;
             text-decoration: none;
             display: inline-block;
@@ -427,7 +534,6 @@
             overflow: hidden;
             border: 1px solid rgba(0, 212, 255, 0.2);
             transition: all 0.4s;
-            cursor: pointer;
         }
         .portfolio-card:hover {
             transform: translateY(-10px);
@@ -625,7 +731,6 @@
             color: white;
             font-size: 1.1rem;
             font-weight: 600;
-            cursor: pointer;
             transition: all 0.4s;
             font-family: 'Poppins', sans-serif;
         }
@@ -765,7 +870,6 @@
             border: none;
             border-radius: 50%;
             font-size: 1.6rem;
-            cursor: pointer;
             opacity: 0;
             transition: all 0.4s;
             z-index: 999;
@@ -833,11 +937,15 @@
             to { transform: rotate(360deg); }
         }
         a {
-    color: white;
-}
+            color: white;
+        }
     </style>
 </head>
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    
     <!-- Loader -->
     <div class="loader" id="loader">
         <div class="loader-circle"></div>
@@ -956,8 +1064,6 @@
                 </div>
                 <div class="portfolio-details">
                     <h3>E-Commerce Store Design</h3>
-                    <!---<p class="portfolio-category">Shopify Development</p>-->
-                    <!--<p class="portfolio-description">Custom Shopify theme development with product integration and payment gateway setup.</p>-->
                 </div>
             </div>
             <!-- Portfolio Item 2 -->
@@ -972,8 +1078,6 @@
                 </div>
                 <div class="portfolio-details">
                     <h3>E-Commerce Website Design</h3>
-                    <!--<p class="portfolio-category">Digital Marketing</p>-->
-                    <!--<p class="portfolio-description">Facebook Ads and Google Ads campaign management with conversion optimization.</p>-->
                 </div>
             </div>
             <!-- Portfolio Item 3 -->
@@ -988,58 +1092,8 @@
                 </div>
                 <div class="portfolio-details">
                     <h3>E-Commerce Website Redesign</h3>
-                    <!--<p class="portfolio-category">Web Design</p>-->
-                    <!---<p class="portfolio-description">Complete website redesign with modern UI/UX principles and responsive layout.</p>-->
                 </div>
             </div>
-            <!-- Portfolio Item 4 
-            <div class="portfolio-card">
-                <div class="portfolio-image-container">
-                    <img src="https://via.placeholder.com/400x300?text=Mobile+App+4" alt="Project 4" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <a href="https://example.com/project4" target="_blank" class="portfolio-link">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="portfolio-details">
-                    <h3>Brand Identity Design</h3>
-                    <p class="portfolio-category">Figma Design</p>
-                    <p class="portfolio-description">Complete brand identity system including logo, color palette, and design guidelines.</p>
-                </div>
-            </div>
-            Portfolio Item 5
-            <div class="portfolio-card">
-                <div class="portfolio-image-container">
-                    <img src="https://via.placeholder.com/400x300?text=Landing+Page+5" alt="Project 5" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <a href="https://example.com/project5" target="_blank" class="portfolio-link">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="portfolio-details">
-                    <h3>Landing Page Development</h3>
-                    <p class="portfolio-category">Web Development</p>
-                    <p class="portfolio-description">High-converting landing page with modern design and optimization for mobile devices.</p>
-                </div>
-            </div>
-            Portfolio Item 6
-            <div class="portfolio-card">
-                <div class="portfolio-image-container">
-                    <img src="https://via.placeholder.com/400x300?text=Social+Media+6" alt="Project 6" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <a href="https://example.com/project6" target="_blank" class="portfolio-link">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="portfolio-details">
-                    <h3>Social Media Graphics</h3>
-                    <p class="portfolio-category">Canva Design</p>
-                    <p class="portfolio-description">Professional social media graphics and marketing materials for brand promotion.</p>
-                </div>
-            </div>-->
         </div>
     </section>
     <!-- Pricing Section -->
@@ -1165,12 +1219,90 @@
         <i class="fas fa-arrow-up"></i>
     </button>
     <script>
+        // Advanced Custom Cursor Effect with Trail and Click Ripple
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+        let mouseX = 0, mouseY = 0;
+        let followerX = 0, followerY = 0;
+        let trailTimer;
+        
+        // Mouse move event
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            cursor.style.left = mouseX + 'px';
+            cursor.style.top = mouseY + 'px';
+            
+            // Create trail particles
+            createTrailParticle(mouseX, mouseY);
+        });
+        
+        // Smooth follower animation
+        function animateFollower() {
+            followerX += (mouseX - followerX) * 0.15;
+            followerY += (mouseY - followerY) * 0.15;
+            
+            cursorFollower.style.left = followerX + 'px';
+            cursorFollower.style.top = followerY + 'px';
+            
+            requestAnimationFrame(animateFollower);
+        }
+        animateFollower();
+        
+        // Create cursor trail particles
+        let lastTrailTime = 0;
+        function createTrailParticle(x, y) {
+            const currentTime = Date.now();
+            if (currentTime - lastTrailTime < 50) return; // Throttle trail creation
+            lastTrailTime = currentTime;
+            
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            trail.style.left = x + 'px';
+            trail.style.top = y + 'px';
+            document.body.appendChild(trail);
+            
+            setTimeout(() => {
+                trail.remove();
+            }, 800);
+        }
+        
+        // Click ripple effect
+        document.addEventListener('click', (e) => {
+            const ripple = document.createElement('div');
+            ripple.className = 'cursor-click-effect';
+            ripple.style.left = e.clientX + 'px';
+            ripple.style.top = e.clientY + 'px';
+            document.body.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+        
+        // Hover effects for interactive elements
+        const hoverElements = document.querySelectorAll('a, button, .portfolio-card, .service-card, .skill-item, .pricing-card, .contact-item');
+        
+        hoverElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+                cursorFollower.classList.add('hover');
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+                cursorFollower.classList.remove('hover');
+            });
+        });
+        
         // Loader
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('loader').classList.add('hide');
             }, 1000);
         });
+        
         // Scroll to Top Button
         const scrollBtn = document.getElementById('scrollTop');
         window.addEventListener('scroll', () => {
@@ -1180,17 +1312,20 @@
                 scrollBtn.classList.remove('active');
             }
         });
+        
         function scrollToTop() {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         }
+        
         // Scroll Animation
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
         };
+        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1198,14 +1333,17 @@
                 }
             });
         }, observerOptions);
+        
         document.querySelectorAll('.service-card, .skill-item, .contact-item, .pricing-card, .portfolio-card').forEach(el => {
             observer.observe(el);
         });
+        
         // Contact for Pricing Plan
         function contactForPlan(plan) {
             const message = `Hi Mustufa, I'm interested in the ${plan} plan. Can we discuss further?`;
             window.open('https://wa.me/923353512406?text=' + encodeURIComponent(message), '_blank');
         }
+        
         // Smooth scroll for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1219,6 +1357,7 @@
                 }
             });
         });
+        
         // Parallax effect on hero
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
@@ -1230,7 +1369,3 @@
     </script>
 </body>
 </html>
-
-
-
-
