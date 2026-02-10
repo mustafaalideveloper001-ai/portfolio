@@ -614,6 +614,171 @@
             line-height: 1.6;
             font-weight: 300;
         }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 6rem 5%;
+            background: rgba(10, 14, 39, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.05), transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(255, 107, 157, 0.05), transparent 50%);
+            pointer-events: none;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonials-slider {
+            position: relative;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+
+        .testimonials-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .testimonial-card {
+            min-width: 100%;
+            padding: 3rem;
+            background: rgba(20, 25, 55, 0.9);
+            border-radius: 30px;
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            position: relative;
+            transition: all 0.4s;
+        }
+
+        .testimonial-card::before {
+            content: '\f10d';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 2rem;
+            right: 3rem;
+            font-size: 5rem;
+            color: rgba(0, 212, 255, 0.1);
+            z-index: 0;
+        }
+
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: #b8c5d6;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .author-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            object-fit: cover;
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+        }
+
+        .author-info h4 {
+            font-size: 1.3rem;
+            color: var(--light);
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .author-info p {
+            color: var(--primary);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .testimonial-rating {
+            display: flex;
+            gap: 0.3rem;
+            margin-top: 0.5rem;
+        }
+
+        .testimonial-rating i {
+            color: var(--gold);
+            font-size: 1rem;
+        }
+
+        /* Slider Controls */
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .slider-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            color: var(--primary);
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s;
+        }
+
+        .slider-btn:hover {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-color: var(--primary);
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.3);
+            transition: all 0.4s;
+        }
+
+        .dot.active {
+            background: var(--primary);
+            width: 35px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
+        }
+
         /* Pricing Section */
         .pricing {
             padding: 6rem 5%;
@@ -906,6 +1071,12 @@
             .pricing-card.featured {
                 transform: scale(1);
             }
+            .testimonial-card {
+                padding: 2rem;
+            }
+            .testimonial-text {
+                font-size: 1.05rem;
+            }
         }
         /* Loading Animation */
         .loader {
@@ -961,6 +1132,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -1096,6 +1268,118 @@
             </div>
         </div>
     </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <h2 class="section-title">Client Success Stories</h2>
+        <p class="section-subtitle">What my clients say about working with me</p>
+        <div class="testimonials-container">
+            <div class="testimonials-slider">
+                <div class="testimonials-track" id="testimonialsTrack">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "Working with Mustufa was an absolute game-changer for our business. He transformed our outdated website into a modern, high-converting Shopify store that increased our sales by 150% in just 3 months. His attention to detail and creative approach exceeded all our expectations!"
+                            </p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson" class="author-image">
+                                <div class="author-info">
+                                    <h4>Sarah Johnson</h4>
+                                    <p>CEO, Fashion Boutique</p>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "Mustufa's expertise in Shopify development is unmatched. He not only built us a stunning online store but also implemented smart digital marketing strategies that doubled our customer base. His professionalism and dedication make him stand out from the crowd. Highly recommended!"
+                            </p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="author-image">
+                                <div class="author-info">
+                                    <h4>Michael Chen</h4>
+                                    <p>Founder, Tech Gadgets Store</p>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "I've worked with several developers before, but Mustufa is in a league of his own. His creative designs combined with flawless functionality gave us exactly what we needed. The website loads incredibly fast and our conversion rate has skyrocketed. Thank you, Mustufa!"
+                            </p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emma Rodriguez" class="author-image">
+                                <div class="author-info">
+                                    <h4>Emma Rodriguez</h4>
+                                    <p>Marketing Director, Beauty Brand</p>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "Outstanding work! Mustufa delivered our project ahead of schedule and went above and beyond to ensure everything was perfect. His communication throughout the process was excellent, and he provided valuable insights that improved our overall strategy. Will definitely work with him again!"
+                            </p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="David Williams" class="author-image">
+                                <div class="author-info">
+                                    <h4>David Williams</h4>
+                                    <p>Owner, Sports Equipment Shop</p>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slider Controls -->
+            <div class="slider-controls">
+                <button class="slider-btn" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-btn" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <!-- Slider Dots -->
+            <div class="slider-dots" id="sliderDots"></div>
+        </div>
+    </section>
+
     <!-- Pricing Section -->
     <section class="pricing" id="pricing">
         <h2 class="section-title">Pricing Plans</h2>
@@ -1282,7 +1566,7 @@
         });
         
         // Hover effects for interactive elements
-        const hoverElements = document.querySelectorAll('a, button, .portfolio-card, .service-card, .skill-item, .pricing-card, .contact-item');
+        const hoverElements = document.querySelectorAll('a, button, .portfolio-card, .service-card, .skill-item, .pricing-card, .contact-item, .slider-btn');
         
         hoverElements.forEach(element => {
             element.addEventListener('mouseenter', () => {
@@ -1334,7 +1618,7 @@
             });
         }, observerOptions);
         
-        document.querySelectorAll('.service-card, .skill-item, .contact-item, .pricing-card, .portfolio-card').forEach(el => {
+        document.querySelectorAll('.service-card, .skill-item, .contact-item, .pricing-card, .portfolio-card, .testimonial-card').forEach(el => {
             observer.observe(el);
         });
         
@@ -1366,6 +1650,87 @@
                 hero.style.transform = `translateY(${scrolled * 0.5}px)`;
             }
         });
+
+        // Testimonials Slider
+        const track = document.getElementById('testimonialsTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dotsContainer = document.getElementById('sliderDots');
+        const testimonials = document.querySelectorAll('.testimonial-card');
+        
+        let currentSlide = 0;
+        const totalSlides = testimonials.length;
+        
+        // Create dots
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+        
+        const dots = document.querySelectorAll('.dot');
+        
+        function updateSlider() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }
+        
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+        
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+        
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        // Auto-play slider
+        let autoplayInterval = setInterval(nextSlide, 5000);
+        
+        // Pause autoplay on hover
+        const sliderContainer = document.querySelector('.testimonials-slider');
+        sliderContainer.addEventListener('mouseenter', () => {
+            clearInterval(autoplayInterval);
+        });
+        
+        sliderContainer.addEventListener('mouseleave', () => {
+            autoplayInterval = setInterval(nextSlide, 5000);
+        });
+        
+        // Touch/Swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        sliderContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        sliderContainer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                nextSlide();
+            }
+            if (touchEndX > touchStartX + 50) {
+                prevSlide();
+            }
+        }
     </script>
 </body>
 </html>
